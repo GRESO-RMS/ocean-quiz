@@ -314,10 +314,22 @@
     gap: 14px;
   }
 
-  .option-btn:hover:not(:disabled) {
-    background: rgba(0,245,196,0.08);
-    border-color: rgba(0,245,196,0.3);
-    
+  @media (hover: hover) {
+    .option-btn:hover:not(:disabled) {
+      background: rgba(0,245,196,0.08);
+      border-color: rgba(0,245,196,0.3);
+      color: var(--white);
+    }
+  }
+  @media (hover: none) {
+    .option-btn:active:not(:disabled) {
+      background: rgba(0,245,196,0.08);
+      border-color: rgba(0,245,196,0.3);
+      color: var(--white);
+    }
+    .option-btn:not(:disabled) {
+      -webkit-tap-highlight-color: transparent;
+    }
   }
 
   .option-label {
