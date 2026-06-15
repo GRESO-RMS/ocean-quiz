@@ -749,13 +749,8 @@ function renderQuestion() {
   feedback.textContent = '';
 
   const labels = ['A', 'B', 'C', 'D'];
-const container = document.getElementById('options-container');
-  container.style.opacity = '0';
-  setTimeout(() => {
-    container.innerHTML = '';
-    container.style.opacity = '1';
-    container.style.transition = 'opacity 0.3s ease';
-  }, 50);
+ const container = document.getElementById('options-container');
+  container.innerHTML = '';
 
   q.options.forEach((opt, i) => {
     const btn = document.createElement('button');
@@ -774,7 +769,7 @@ function handleAnswer(idx) {
   const buttons = document.querySelectorAll('.option-btn');
   const feedback = document.getElementById('feedback-msg');
 
-  buttons.forEach(b => b.disabled = true);
+  buttons.forEach(b => { b.disabled = true; b.blur(); });
   buttons[q.correct].classList.add('correct');
 
   if (idx === q.correct) {
