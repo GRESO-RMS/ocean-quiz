@@ -784,7 +784,7 @@ function handleAnswer(idx) {
     feedback.textContent = q.curiosita ? `✓ Corretto!  ${q.curiosita}` : '✓ Corretto!';
     feedback.className = 'feedback-msg correct show';
   } else {
-    buttons[idx].classList.add('wrong');
+    
     const base = `✗ La risposta era: ${q.options[q.correct]}`;
     feedback.textContent = q.curiosita ? `${base}  ${q.curiosita}` : base;
     feedback.className = 'feedback-msg wrong show';
