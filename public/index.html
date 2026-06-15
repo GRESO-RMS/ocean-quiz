@@ -749,8 +749,13 @@ function renderQuestion() {
   feedback.textContent = '';
 
   const labels = ['A', 'B', 'C', 'D'];
-  const container = document.getElementById('options-container');
-  container.innerHTML = '';
+const container = document.getElementById('options-container');
+  container.style.opacity = '0';
+  setTimeout(() => {
+    container.innerHTML = '';
+    container.style.opacity = '1';
+    container.style.transition = 'opacity 0.3s ease';
+  }, 50);
 
   q.options.forEach((opt, i) => {
     const btn = document.createElement('button');
@@ -792,7 +797,7 @@ function handleAnswer(idx) {
     } else {
       endQuiz();
     }
-  }, 2800);
+  }, 2600);
 }
 
 // =====================
