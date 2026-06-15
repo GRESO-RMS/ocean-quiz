@@ -351,6 +351,11 @@
   .option-btn.wrong .option-label { background: var(--coral); color: var(--white); }
 
   .option-btn:disabled { cursor: default; }
+  .option-btn:disabled:not(.correct):not(.wrong) {
+    background: rgba(255,255,255,0.04) !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: var(--sand) !important;
+  }
 
   .feedback-msg {
     text-align: center;
@@ -769,8 +774,10 @@ function handleAnswer(idx) {
   const buttons = document.querySelectorAll('.option-btn');
   const feedback = document.getElementById('feedback-msg');
 
-  buttons.forEach(b => { b.disabled = true; b.blur(); });
-  buttons[q.correct].classList.add('correct');
+  buttons.forEach(b => { b.disabled = true; b.blur(); b.classList.remove('correct','wrong'); });
+  setTimeout(() => { buttons[q.correct].classList.add('correct'); }, 10);
+  if (idx !== q.correct) setTimeout(() => { buttons[idx].classList.add('wrong'); }, 10);
+  
 
   if (idx === q.correct) {
     score++;
